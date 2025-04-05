@@ -188,6 +188,15 @@ class SolicitudFormState extends State<SolicitudForm> {
             TextFormField(
               controller: _telefonoController,
               decoration: const InputDecoration(labelText: 'Teléfono o Celular'),
+              keyboardType: TextInputType.phone,
+              validator: (value) {
+                if (value != null && value.isNotEmpty) {
+                  if (!RegExp(r'^[0-9]{10}$').hasMatch(value)) { // Validación de 10 dígitos
+                    return 'Ingresa un número de 10 dígitos';
+                  }
+                }
+                return null;
+              },
             ),
             _buildFechaNacimientoField(),
             TextFormField(
