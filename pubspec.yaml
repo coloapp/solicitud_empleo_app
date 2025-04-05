@@ -1,10 +1,10 @@
 name: solicitud_empleo_app
 description: "Aplicación para la gestión de solicitudes de empleo"
-publish_to: 'none' # Evita la publicación accidental a pub.dev
+publish_to: 'none'
 version: 1.0.0+1
 
 environment:
-  sdk: '>=3.0.0 <4.0.0' #  Ajusta el rango del SDK (más flexible)
+  sdk: '>=3.0.0 <4.0.0'
 
 dependencies:
   flutter:
@@ -12,20 +12,14 @@ dependencies:
   cupertino_icons: ^1.0.8
   flutter_svg: ^2.0.0
   google_fonts: ^6.1.0
-  intl: ^0.18.0 # Asegúrate de que este paquete este agregado.
+  intl: ^0.18.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^5.0.0 #  Asegúrate de tener la última versión
+  flutter_lints: ^5.0.0
 
 flutter:
   uses-material-design: true
   assets:
-    - assets/ #   Simplifica la ruta (si todos los assets están aquí)
-  # fonts: #  Si vas a usar fuentes, descomenta esto y agrega las rutas
-  #   - family: Poppins
-  #     fonts:
-  #       - asset: assets/fonts/Poppins-Regular.ttf
-  #       - asset: assets/fonts/Poppins-Bold.ttf
-  #         weight: 700
+    - assets/

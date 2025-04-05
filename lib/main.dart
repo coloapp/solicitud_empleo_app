@@ -22,10 +22,10 @@ class SolicitudForm extends StatefulWidget {
   const SolicitudForm({super.key});
 
   @override
-  _SolicitudFormState createState() => _SolicitudFormState();
+  SolicitudFormState createState() => SolicitudFormState(); // Corrección aquí
 }
 
-class _SolicitudFormState extends State<SolicitudForm> {
+class SolicitudFormState extends State<SolicitudForm> { // Corrección aquí
   int _currentSection = 0;
   final _formKey = GlobalKey<FormState>();
   final _nombreController = TextEditingController();
@@ -225,46 +225,4 @@ class _SolicitudFormState extends State<SolicitudForm> {
   }
 
   Widget _buildFechaNacimientoField() {
-    return TextFormField(
-      controller: _fechaNacimientoController,
-      decoration: InputDecoration(
-        labelText: 'Fecha de Nacimiento (dd/MM/yyyy)',
-        hintText: 'dd/MM/yyyy',
-        errorText: _selectedDate == null ? null : DateFormat('dd/MM/yyyy').format(_selectedDate!),
-        suffixIcon: IconButton(
-          icon: const Icon(Icons.calendar_today),
-          onPressed: () {
-            _selectDate(context);
-          },
-        ),
-      ),
-      validator: (value) {
-        if (value == null || value.isEmpty) {
-          return 'Por favor ingresa tu fecha de nacimiento';
-        }
-        try {
-          DateFormat('dd/MM/yyyy').parseStrict(value);
-          return null;
-        } catch (e) {
-          return 'Formato de fecha inválido (dd/MM/yyyy)';
-        }
-      },
-      keyboardType: TextInputType.datetime,
-    );
-  }
-
-  Future<void> _selectDate(BuildContext context) async {
-    final DateTime? picked = await showDatePicker(
-      context: context,
-      initialDate: _selectedDate ?? DateTime.now(),
-      firstDate: DateTime(1900),
-      lastDate: DateTime.now(),
-    );
-    if (picked != null && picked != _selectedDate) {
-      setState(() {
-        _selectedDate = picked;
-        _fechaNacimientoController.text = DateFormat('dd/MM/yyyy').format(picked);
-      });
-    }
-  }
-}
+    return TextFormField
