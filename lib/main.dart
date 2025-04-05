@@ -191,7 +191,7 @@ class SolicitudFormState extends State<SolicitudForm> {
               keyboardType: TextInputType.phone,
               validator: (value) {
                 if (value != null && value.isNotEmpty) {
-                  if (!RegExp(r'^[0-9]{10}$').hasMatch(value)) { // Validación de 10 dígitos
+                  if (!RegExp(r'^[0-9]{10}$').hasMatch(value)) {
                     return 'Ingresa un número de 10 dígitos';
                   }
                 }
@@ -234,6 +234,25 @@ class SolicitudFormState extends State<SolicitudForm> {
   }
 
   Widget _buildFechaNacimientoField() {
+    _fechaNacimientoController.addListener(() {
+      final text = _fechaNacimientoController.text;
+      if (text.length == 2 && !text.endsWith('/')) {
+        _fechaNacimientoController.value = TextEditingValue(
+          text: '$text/',
+          selection: TextSelection.fromPosition(
+            TextPosition(offset: '$text/'.length),
+          ),
+        );
+      } else if (text.length == 5 && !text.endsWith('/')) {
+        _fechaNacimientoController.value = TextEditingValue(
+          text: '$text/',
+          selection: TextSelection.fromPosition(
+            TextPosition(offset: '$text/'.length),
+          ),
+        );
+      }
+    });
+
     return TextFormField(
       controller: _fechaNacimientoController,
       decoration: InputDecoration(
