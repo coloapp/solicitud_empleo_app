@@ -31,18 +31,29 @@ class SolicitudFormState extends State<SolicitudForm> {
   final _nombreController = TextEditingController();
   final _apellidoPaternoController = TextEditingController();
   final _apellidoMaternoController = TextEditingController();
+  final _edadController = TextEditingController();
   final _domicilioController = TextEditingController();
+  final _coloniaController = TextEditingController();
+  final _codigoPostalController = TextEditingController();
+  final _telefonoController = TextEditingController();
+  final _sexoController = TextEditingController();
   final _ciudadController = TextEditingController();
   final _entidadFederativaController = TextEditingController();
-  final _telefonoController = TextEditingController();
-  final _fechaNacimientoController = TextEditingController();
   final _lugarNacimientoController = TextEditingController();
-  final _curpController = TextEditingController();
-  final _rfcController = TextEditingController();
-  final _nssController = TextEditingController();
-  final _edadController = TextEditingController();
-  final _sexoController = TextEditingController();
+  final _fechaNacimientoController = TextEditingController();
+  final _nacionalidadController = TextEditingController();
+  final _viveConController = TextEditingController();
+  final _dependientesController = TextEditingController();
   final _estadoCivilController = TextEditingController();
+  final _curpController = TextEditingController();
+  final _aforeController = TextEditingController();
+  final _rfcController = TextEditingController();
+  final _licenciaManejoController = TextEditingController();
+  final _cartillaMilitarController = TextEditingController();
+  final _pasaporteController = TextEditingController();
+  final _nssController = TextEditingController();
+  final _licenciaClaseNumeroController = TextEditingController();
+  final _extranjeroController = TextEditingController();
 
   DateTime? _selectedDate;
 
@@ -156,6 +167,14 @@ class SolicitudFormState extends State<SolicitudForm> {
           children: <Widget>[
             const Text("Datos Personales", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
             TextFormField(
+              controller: _apellidoPaternoController,
+              decoration: const InputDecoration(labelText: 'Primer Apellido'),
+            ),
+            TextFormField(
+              controller: _apellidoMaternoController,
+              decoration: const InputDecoration(labelText: 'Segundo Apellido'),
+            ),
+            TextFormField(
               controller: _nombreController,
               decoration: const InputDecoration(labelText: 'Nombre(s)'),
               validator: (value) {
@@ -166,24 +185,20 @@ class SolicitudFormState extends State<SolicitudForm> {
               },
             ),
             TextFormField(
-              controller: _apellidoPaternoController,
-              decoration: const InputDecoration(labelText: 'Primer Apellido'),
-            ),
-            TextFormField(
-              controller: _apellidoMaternoController,
-              decoration: const InputDecoration(labelText: 'Segundo Apellido'),
+              controller: _edadController,
+              decoration: const InputDecoration(labelText: 'Edad (años)'),
             ),
             TextFormField(
               controller: _domicilioController,
               decoration: const InputDecoration(labelText: 'Domicilio (Calle y Número)'),
             ),
             TextFormField(
-              controller: _ciudadController,
-              decoration: const InputDecoration(labelText: 'Ciudad o Alcaldía'),
+              controller: _coloniaController,
+              decoration: const InputDecoration(labelText: 'Colonia'),
             ),
             TextFormField(
-              controller: _entidadFederativaController,
-              decoration: const InputDecoration(labelText: 'Entidad Federativa del Domicilio'),
+              controller: _codigoPostalController,
+              decoration: const InputDecoration(labelText: 'Código Postal'),
             ),
             TextFormField(
               controller: _telefonoController,
@@ -198,34 +213,75 @@ class SolicitudFormState extends State<SolicitudForm> {
                 return null;
               },
             ),
-            _buildFechaNacimientoField(),
+            TextFormField(
+              controller: _sexoController,
+              decoration: const InputDecoration(labelText: 'Sexo (Masculino o Femenino)'),
+            ),
+            TextFormField(
+              controller: _ciudadController,
+              decoration: const InputDecoration(labelText: 'Ciudad o Alcaldía'),
+            ),
+            TextFormField(
+              controller: _entidadFederativaController,
+              decoration: const InputDecoration(labelText: 'Entidad Federativa del Domicilio'),
+            ),
             TextFormField(
               controller: _lugarNacimientoController,
               decoration: const InputDecoration(labelText: 'Entidad Federativa (lugar) de Nacimiento'),
             ),
+            _buildFechaNacimientoField(),
+            TextFormField(
+              controller: _nacionalidadController,
+              decoration: const InputDecoration(labelText: 'Nacionalidad'),
+            ),
+            TextFormField(
+              controller: _viveConController,
+              decoration: const InputDecoration(labelText: 'Vive con (Padres, Familia, Parientes)'),
+            ),
+            TextFormField(
+              controller: _dependientesController,
+              decoration: const InputDecoration(labelText: 'Personas que dependen de usted (Hijos, Cónyuge, Padres)'),
+            ),
+            TextFormField(
+              controller: _estadoCivilController,
+              decoration: const InputDecoration(labelText: 'Estado Civil'),
+            ),
+            const Text("DOCUMENTACIÓN", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
             TextFormField(
               controller: _curpController,
               decoration: const InputDecoration(labelText: 'Clave Única de Registro de Población (CURP)'),
+            ),
+            TextFormField(
+              controller: _aforeController,
+              decoration: const InputDecoration(labelText: 'No de AFORE'),
             ),
             TextFormField(
               controller: _rfcController,
               decoration: const InputDecoration(labelText: 'Registro Federal de Contribuyentes (RFC)'),
             ),
             TextFormField(
+              controller: _licenciaManejoController,
+              decoration: const InputDecoration(labelText: '¿Tiene Licencia de Manejo? (Si o No)'),
+            ),
+            TextFormField(
+              controller: _cartillaMilitarController,
+              decoration: const InputDecoration(labelText: 'Cartilla de Servicio Militar No.'),
+            ),
+            TextFormField(
+              controller: _pasaporteController,
+              decoration: const InputDecoration(labelText: 'No. Pasaporte'),
+            ),
+            TextFormField(
               controller: _nssController,
               decoration: const InputDecoration(labelText: 'Número de Seguridad Social'),
             ),
             TextFormField(
-              controller: _edadController,
-              decoration: const InputDecoration(labelText: 'Edad (años)'),
+              controller: _licenciaClaseNumeroController,
+              decoration: const InputDecoration(labelText: 'Clase y número de licencia'),
             ),
             TextFormField(
-              controller: _sexoController,
-              decoration: const InputDecoration(labelText: 'Sexo (Masculino o Femenino)'),
-            ),
-            TextFormField(
-              controller: _estadoCivilController,
-              decoration: const InputDecoration(labelText: 'Estado Civil'),
+              controller: _extranjeroController,
+              decoration: const InputDecoration(labelText: 'Siendo extranjero:'),
             ),
           ],
         ),
