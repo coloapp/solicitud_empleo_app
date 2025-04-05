@@ -13,11 +13,12 @@ dependencies:
   flutter_svg: ^2.0.0
   google_fonts: ^6.1.0
   intl: ^0.18.0
+  image_picker: ^1.0.4 # Asegúrate de usar la versión más reciente disponible
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^5.0.0
+  flutter_lints: ^2.0.0 # Ajusta la versión si es necesario
 
 flutter:
   uses-material-design: true
