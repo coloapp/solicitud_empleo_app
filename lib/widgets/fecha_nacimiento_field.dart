@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
+import 'package:intl/intl.dart'; // Importa intl
 
 class FechaNacimientoField extends StatelessWidget {
   final TextEditingController controller;
@@ -28,6 +28,7 @@ class FechaNacimientoField extends StatelessWidget {
         );
         if (picked != null && picked != selectedDate) {
           onDateChanged(picked);
+          controller.text = DateFormat('dd/MM/yyyy').format(picked); // Formatea la fecha
         }
       },
       validator: (value) {
