@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../widgets/empleo_form.dart'; // Importa el widget personalizado
+import '../widgets/empleo_form.dart';
 
 class ExperienciaLaboralPage extends StatelessWidget {
   const ExperienciaLaboralPage({super.key});
