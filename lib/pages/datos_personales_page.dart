@@ -1,18 +1,24 @@
 import 'package:flutter/material.dart';
-import '../widgets/fecha_nacimiento_field.dart';
-import 'package:intl/intl.dart';
+import 'package:logging/logging.dart'; // Importa logging
+import 'package:intl/intl.dart'; // Importa intl para formatear la fecha
 
 class DatosPersonalesPage extends StatefulWidget {
   const DatosPersonalesPage({super.key});
 
   @override
-  DatosPersonalesPageState createState() => DatosPersonalesPageState(); // Clase pública
+  DatosPersonalesPageState createState() => DatosPersonalesPageState();
 }
 
-class DatosPersonalesPageState extends State<DatosPersonalesPage> { // Clase pública
+class DatosPersonalesPageState extends State<DatosPersonalesPage> {
   final _formKey = GlobalKey<FormState>();
   final _fechaNacimientoController = TextEditingController();
-  DateTime? _selectedDate;
+  final _nombreController = TextEditingController();
+  final _apellidoController = TextEditingController();
+  final _direccionController = TextEditingController();
+  final _telefonoController = TextEditingController();
+  DateTime? _selectedDate; // Agregamos _selectedDate
+
+  final Logger _log = Logger('DatosPersonalesPage'); // Crea una instancia de Logger
 
   @override
   Widget build(BuildContext context) {
@@ -23,17 +29,71 @@ class DatosPersonalesPageState extends State<DatosPersonalesPage> { // Clase pú
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            FechaNacimientoField(
-              controller: _fechaNacimientoController,
-              selectedDate: _selectedDate,
-              onDateChanged: (DateTime date) {
-                setState(() {
-                  _selectedDate = date;
-                  _fechaNacimientoController.text = DateFormat('dd/MM/yyyy').format(date);
-                });
+            TextFormField( // Campo de Nombre
+              controller: _nombreController,
+              decoration: const InputDecoration(labelText: 'Nombre'),
+              validator: (value) {
+                if (value == null || value.isEmpty) {
+                  return 'Por favor, ingresa tu nombre';
+                }
+                return null;
               },
             ),
-            // ... otros campos
+            TextFormField( // Campo de Apellido
+              controller: _apellidoController,
+              decoration: const InputDecoration(labelText: 'Apellido'),
+              validator: (value) {
+                if (value == null || value.isEmpty) {
+                  return 'Por favor, ingresa tu apellido';
+                }
+                return null;
+              },
+            ),
+            TextFormField( // Campo de Dirección
+              controller: _direccionController,
+              decoration: const InputDecoration(labelText: 'Dirección'),
+            ),
+            TextFormField( // Campo de Teléfono
+              controller: _telefonoController,
+              decoration: const InputDecoration(labelText: 'Teléfono'),
+            ),
+            TextFormField( // Campo de Fecha de Nacimiento
+              controller: _fechaNacimientoController,
+              decoration: const InputDecoration(labelText: 'Fecha de Nacimiento'),
+              readOnly: true,
+              onTap: () async {
+                final DateTime? picked = await showDatePicker(
+                  context: context,
+                  initialDate: _selectedDate ?? DateTime.now(),
+                  firstDate: DateTime(1900),
+                  lastDate: DateTime.now(),
+                );
+                if (picked != null && picked != _selectedDate) {
+                  setState(() {
+                    _selectedDate = picked;
+                    _fechaNacimientoController.text = DateFormat('dd/MM/yyyy').format(picked);
+                  });
+                }
+              },
+            ),
+            ElevatedButton(
+              onPressed: () {
+                if (_formKey.currentState!.validate()) {
+                  String nombre = _nombreController.text;
+                  String apellido = _apellidoController.text;
+                  String direccion = _direccionController.text;
+                  String telefono = _telefonoController.text;
+                  String fechaNacimiento = _fechaNacimientoController.text;
+
+                  _log.info('Nombre: $nombre');
+                  _log.info('Apellido: $apellido');
+                  _log.info('Dirección: $direccion');
+                  _log.info('Teléfono: $telefono');
+                  _log.info('Fecha de Nacimiento: $fechaNacimiento');
+                }
+              },
+              child: const Text('Guardar'),
+            ),
           ],
         ),
       ),
