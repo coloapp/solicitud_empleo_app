@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:proyecto_solicitud_empleo/main.dart';
+import '../widgets/solicitud_form.dart'; // Importación correcta de SolicitudFormWidget
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -33,7 +33,7 @@ class HomePage extends StatelessWidget {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => SolicitudForm()),
+                  MaterialPageRoute(builder: (context) => const SolicitudFormWidget()), // Usamos SolicitudFormWidget importado
                 );
               },
               style: ElevatedButton.styleFrom(

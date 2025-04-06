@@ -1,16 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:proyecto_solicitud_empleo/widgets/fecha_nacimiento_field.dart';
-// ... otros imports
+import '../widgets/fecha_nacimiento_field.dart';
+import 'package:intl/intl.dart';
 
 class DatosPersonalesPage extends StatefulWidget {
   const DatosPersonalesPage({super.key});
 
   @override
-  _DatosPersonalesPageState createState() => _DatosPersonalesPageState();
+  DatosPersonalesPageState createState() => DatosPersonalesPageState(); // Clase pública
 }
 
-class _DatosPersonalesPageState extends State<DatosPersonalesPage> {
-  // ... controladores y variables
+class DatosPersonalesPageState extends State<DatosPersonalesPage> { // Clase pública
+  final _formKey = GlobalKey<FormState>();
+  final _fechaNacimientoController = TextEditingController();
+  DateTime? _selectedDate;
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +23,6 @@ class _DatosPersonalesPageState extends State<DatosPersonalesPage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            // ... campos de datos personales
             FechaNacimientoField(
               controller: _fechaNacimientoController,
               selectedDate: _selectedDate,

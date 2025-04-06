@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:proyecto_solicitud_empleo/widgets/familiar_form.dart'; // Importa el widget personalizado
+import '../widgets/familiar_form.dart';
 
 class DatosFamiliaresPage extends StatelessWidget {
   const DatosFamiliaresPage({super.key});

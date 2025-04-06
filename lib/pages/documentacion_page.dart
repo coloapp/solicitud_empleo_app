@@ -1,16 +1,15 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-// ... otros imports
 
 class DocumentacionPage extends StatefulWidget {
   const DocumentacionPage({super.key});
 
   @override
-  _DocumentacionPageState createState() => _DocumentacionPageState();
+  DocumentacionPageState createState() => DocumentacionPageState(); // Clase pública
 }
 
-class _DocumentacionPageState extends State<DocumentacionPage> {
-  // ... controladores y variables
+class DocumentacionPageState extends State<DocumentacionPage> { // Clase pública
   final ImagePicker _picker = ImagePicker();
   XFile? _identificacionImage;
   XFile? _domicilioImage;
@@ -44,6 +43,8 @@ class _DocumentacionPageState extends State<DocumentacionPage> {
             onPressed: () => _pickImage(ImageSource.gallery, true),
             child: const Text('Seleccionar foto de identificación'),
           ),
+          if (_identificacionImage != null)
+            Image.file(File(_identificacionImage!.path)), // Muestra la imagen de identificación
           ElevatedButton(
             onPressed: () => _pickImage(ImageSource.camera, false),
             child: const Text('Tomar foto de comprobante de domicilio'),
@@ -52,6 +53,8 @@ class _DocumentacionPageState extends State<DocumentacionPage> {
             onPressed: () => _pickImage(ImageSource.gallery, false),
             child: const Text('Seleccionar foto de comprobante de domicilio'),
           ),
+          if (_domicilioImage != null)
+            Image.file(File(_domicilioImage!.path)), // Muestra la imagen de domicilio
           // ... otros campos
         ],
       ),

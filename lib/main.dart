@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:proyecto_solicitud_empleo/pages/home_page.dart';
-import 'package:proyecto_solicitud_empleo/pages/datos_personales_page.dart';
-import 'package:proyecto_solicitud_empleo/pages/escolaridad_page.dart';
-import 'package:proyecto_solicitud_empleo/pages/experiencia_laboral_page.dart';
-import 'package:proyecto_solicitud_empleo/pages/referencias_page.dart';
-import 'package:proyecto_solicitud_empleo/pages/estado_salud_habitos_page.dart';
-import 'package:proyecto_solicitud_empleo/pages/datos_familiares_page.dart';
-import 'package:proyecto_solicitud_empleo/pages/conocimientos_generales_page.dart';
-import 'package:proyecto_solicitud_empleo/pages/datos_generales_page.dart';
-import 'package:proyecto_solicitud_empleo/pages/datos_economicos_page.dart';
-import 'package:proyecto_solicitud_empleo/pages/documentacion_page.dart';
+import 'package:solicitud_empleo_app/pages/home_page.dart';
+import 'package:solicitud_empleo_app/pages/datos_personales_page.dart';
+import 'package:solicitud_empleo_app/pages/escolaridad_page.dart';
+import 'package:solicitud_empleo_app/pages/experiencia_laboral_page.dart';
+import 'package:solicitud_empleo_app/pages/referencias_page.dart';
+import 'package:solicitud_empleo_app/pages/estado_salud_habitos_page.dart';
+import 'package:solicitud_empleo_app/pages/datos_familiares_page.dart';
+import 'package:solicitud_empleo_app/pages/conocimientos_generales_page.dart';
+import 'package:solicitud_empleo_app/pages/datos_generales_page.dart';
+import 'package:solicitud_empleo_app/pages/datos_economicos_page.dart';
+import 'package:solicitud_empleo_app/pages/documentacion_page.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp( // Agregamos const aquí
       home: HomePage(),
     );
   }
@@ -95,27 +95,27 @@ class SolicitudFormState extends State<SolicitudForm> {
   Widget _buildSectionContent() {
     switch (_currentSection) {
       case 1:
-        return DatosPersonalesPage();
+        return const DatosPersonalesPage(); // Agregamos const aquí
       case 2:
-        return EscolaridadPage();
+        return const EscolaridadPage(); // Agregamos const aquí
       case 3:
-        return ExperienciaLaboralPage();
+        return const ExperienciaLaboralPage(); // Agregamos const aquí
       case 4:
-        return ReferenciasPage();
+        return const ReferenciasPage(); // Agregamos const aquí
       case 5:
-        return EstadoSaludHabitosPage();
+        return const EstadoSaludHabitosPage(); // Agregamos const aquí
       case 6:
-        return DatosFamiliaresPage();
+        return const DatosFamiliaresPage(); // Agregamos const aquí
       case 7:
-        return ConocimientosGeneralesPage();
+        return const ConocimientosGeneralesPage(); // Agregamos const aquí
       case 8:
-        return DatosGeneralesPage();
+        return const DatosGeneralesPage(); // Agregamos const aquí
       case 9:
-        return DatosEconomicosPage();
+        return const DatosEconomicosPage(); // Agregamos const aquí
       case 10:
-        return DocumentacionPage();
+        return const DocumentacionPage(); // Agregamos const aquí
       default:
-        return DatosPersonalesPage(); // Por defecto, mostramos la página de datos personales
+        return const DatosPersonalesPage(); // Por defecto, mostramos la página de datos personales
     }
   }
 }

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:proyecto_solicitud_empleo/widgets/referencia_form.dart'; // Importa el widget personalizado
+import '../widgets/referencia_form.dart'; // Importa el widget personalizado
 
 class ReferenciasPage extends StatelessWidget {
   const ReferenciasPage({super.key});
