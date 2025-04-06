@@ -5,12 +5,12 @@ class EstadoSaludHabitosPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(16.0),
+    return const Padding( // Agregamos const aquí
+      padding: EdgeInsets.all(16.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          const Text("Estado de Salud y Hábitos Personales", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+          Text("Estado de Salud y Hábitos Personales", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
           // ... campos de estado de salud y hábitos personales
         ],
       ),
